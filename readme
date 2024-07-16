@@ -1,0 +1,50 @@
+# Flask API for Arabic Letter Recognition
+
+This Flask application serves as an API for recognizing Arabic letters from images using a trained TensorFlow model.
+
+## Setup Instructions
+
+### Prerequisites
+
+- Docker installed on your machine
+- Basic understanding of Docker and Flask
+
+### Installation
+
+
+1. Clone the repository:
+
+   ```bash
+   git clone <repository_url>
+   cd <repository_name>
+
+2. Build the Docker image:
+
+   docker build -t my-flask-app .
+
+3. Running the Application:
+   
+   docker run -p 5000:5000 my-flask-app
+
+4. Access the API:
+   
+   The API will be accessible at http://localhost:5000/predict.
+   
+   Example for the request body: '{"image":"<base64_encoded_image_data>"}
+
+   Expected Response: 
+        {
+        "letter": "<predicted_letter>",
+        "probability": "<predicted_probability>"
+        }
+
+## Files in the Repository
+        app.py: Flask application script containing API endpoints and model inference logic.
+        requirements.txt: List of Python dependencies for the project.
+        model_1.h5: Pre-trained TensorFlow model for letter recognition.
+        label_encoder.pkl: Pickle file containing the label encoder used for decoding predictions.
+
+## Notes
+        This Flask app is configured to run in a Docker container for portability and ease of deployment.
+        Ensure proper encoding of the image data (base64_encoded_image_data) when making POST requests to /predict.
+        
